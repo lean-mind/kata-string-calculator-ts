@@ -1,32 +1,41 @@
 {
-  "name": "kata-fizz-buzz",
+  "name": "kata-string-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kata string calculator based on https://kata-log.rocks/string-calculator-kata",
   "main": "build/index.js",
   "files": [
     "build"
   ],
   "scripts": {
-    "test": "jest",
-    "test:coverage": "npm test -- --coverage",
-    "test:watch": "npm test -- --watchAll",
-    "prepare": "npm run build",
-    "prestart": "npm run build",
-    "start": "node build/index.js",
-    "build": "npm test && tsc",
-    "docs:generate": "rm -rf docs && typedoc lib/ --plugin typedoc-plugin-markdown --out docs"
+    "build": "npm run lint && npm test && tsc",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest --verbose",
+    "test:watch": "npm t -- --watchAll",
+    "test:coverage": "npm t -- --coverage",
+    "git:red": "git add . && git commit -m \"🧪 Failing test\" && git push",
+    "git:green": "git add . && git commit -m \"✅ Pass test\" && git push",
+    "git:refactor": "git add . && git commit -m \"♻️ Refactor test\" && git push"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lean-mind/kata-string-calculator-ts.git"
+  },
+  "homepage": "https://github.com/lean-mind/kata-string-calculator-ts#readme",
+  "author": "Lean Mind <contacto@leanmind.es>",
   "license": "ISC",
   "devDependencies": {
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.11.4",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "jest": "^27.3.1",
-    "ts-jest": "^27.0.7",
-    "typedoc": "^0.22.7",
-    "typedoc-plugin-markdown": "^3.11.3",
-    "typescript": "^4.4.4"
+    "@types/jest": "26.0.5",
+    "@typescript-eslint/eslint-plugin": "4.16.1",
+    "@typescript-eslint/parser": "4.16.1",
+    "eslint": "7.21.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.3.1",
+    "jest": "26.1.0",
+    "lint-staged": "10.2.11",
+    "ts-jest": "26.1.3",
+    "typescript": "4.2.4"
   }
 }
